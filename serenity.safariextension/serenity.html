@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Serenity</title>
+    <link href="serenity.css" rel="stylesheet" />
+    <link href="tachyons.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="background">
+
+      <div class="info flex flex-column justify-center items-center h-100 w-100">
+          <span class="f1 fw2 f-headline">
+            <span id="time"></span>
+            <span id="ampm" class="f1 fw2 f-subheadline"></span>
+          </span>
+          <div class="f1 fw3 f-headline"><span id="greeting"></span></div>
+      </div>
+
+      <div class="white absolute top-0 right-0 pt4 pr4 z-1 f3 fw3">
+        <div id="weather"></div>
+      </div>
+
+      <div class="white absolute bottom-0 w-100 pb4 z-1">
+        <div id="quote" class="f3 fw3 tc"></div>
+        <div id="author" class="f4 fw3 tc"></div>
+      </div>
+
+      <img id="img" src="" class="w-100 h-100" />
+      <div class="overlay" />
+    </div>
+
+    <script src="serenity.js"></script>
+  </body>
+</html>
