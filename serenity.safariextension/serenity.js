@@ -8,25 +8,22 @@ function padLeft(num) {
   }
 }
 
-function last(arr) {
-  if (!arr) {
-    return null;
-  }
-
-  return arr[arr.length - 1];
-}
-
 function setBackground(message) {
   var posts = JSON.parse(message).data.children;
   var urls = posts
     .filter(
       p =>
-        !!p.data.preview.images && p.data.preview.images[0].source.width > 2000
+        !!p.data.preview.images && p.data.preview.images[0].source.width > 3000
     )
     .map(p => p.data.preview.images[0].source)
     .map(res => res.url);
 
-  document.getElementById("img").src = urls[0];
+  var url = decodeURI(urls[0]);
+  var bg = document.getElementById("background");
+
+  bg.style.background = "url(" + url + ") no-repeat center";
+  bg.style["background-size"] = "cover";
+  bg.style["box-shadow"] = "inset 0 0 0 2000px rgba(0,0,0,0.5)";
 }
 
 function setWeather(message) {
@@ -50,13 +47,9 @@ function onMessage(msg) {
   }
 }
 
-function setQuote(message) {
-  var data = JSON.parse(message);
-  var author = data.contents.quotes[0].author;
-  var quote = data.contents.quotes[0].quote;
-
-  document.getElementById("quote").textContent = quote;
-  document.getElementById("author").textContent = author;
+function setQuote(quote) {
+  document.getElementById("quote").textContent = quote.quote;
+  document.getElementById("author").textContent = quote.author;
 }
 
 function greeting(hour) {
@@ -69,16 +62,22 @@ function greeting(hour) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+function setTime() {
   var today = new Date();
   var h = today.getHours();
   var m = today.getMinutes();
 
   document.getElementById("time").textContent =
-    padLeft(h > 12 ? h - 12 : h) + ":" + padLeft(m);
+    (h > 12 ? h - 12 : h) + ":" + padLeft(m);
 
-  var ampm = h > 12 ? "pm" : "am";
+  var ampm = h >= 12 ? "pm" : "am";
   document.getElementById("ampm").textContent = ampm;
 
   document.getElementById("greeting").textContent = greeting(h);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  safari.self.tab.dispatchMessage(window.location.href, null);
+
+  setTime();
 });

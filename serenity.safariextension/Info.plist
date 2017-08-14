@@ -36,21 +36,17 @@
 	<key>Description</key>
 	<string>See something new every day when you open a new tab</string>
 	<key>DeveloperIdentifier</key>
-	<string>0000000000</string>
+	<string>3822QQG8P7</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
 	<dict>
 		<key>Website Access</key>
 		<dict>
-			<key>Allowed Domains</key>
-			<array>
-				<string>reddit.com</string>
-			</array>
 			<key>Include Secure Pages</key>
 			<true/>
 			<key>Level</key>
-			<string>Some</string>
+			<string>All</string>
 		</dict>
 	</dict>
 	<key>Website</key>

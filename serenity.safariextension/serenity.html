@@ -3,32 +3,50 @@
   <head>
     <meta charset="utf-8">
     <title>Serenity</title>
-    <link href="serenity.css" rel="stylesheet" />
+    <style>
+      html,
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      .f0 {
+        font-size: 144px;
+      }
+    </style>
     <link href="tachyons.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="background">
 
-      <div class="info flex flex-column justify-center items-center h-100 w-100">
-          <span class="f1 fw2 f-headline">
-            <span id="time"></span>
-            <span id="ampm" class="f1 fw2 f-subheadline"></span>
-          </span>
-          <div class="f1 fw3 f-headline"><span id="greeting"></span></div>
+    <header class="vh-100 dt w-100">
+
+      <!-- background and overlay -->
+      <div
+        id="background"
+        class="dtc v-mid cover ph3 ph4-m ph5-l tc white">
+
+        <!-- time -->
+        <h1 class="f0 fw2 mt0 mb0">
+          <span id="time"></span>
+          <span id="ampm" class="f1 fw1 f-subheadline"></span>
+        <h1/>
+
+        <!-- greeting -->
+        <div class="f2 fw3 f-headline">
+          <span id="greeting"></span>
+        </div>
+
+        <!-- weather -->
+        <div class="white absolute top-0 right-0 pt4 pr4 f3 fw3">
+          <div id="weather"></div>
+        </div>
+
+        <!-- quote -->
+        <div class="white absolute bottom-0 left-0 w-100 pb4">
+          <div id="quote" class="f3 fw3 tc"></div>
+          <div id="author" class="f4 fw3 tc"></div>
+        </div>
       </div>
-
-      <div class="white absolute top-0 right-0 pt4 pr4 z-1 f3 fw3">
-        <div id="weather"></div>
-      </div>
-
-      <div class="white absolute bottom-0 w-100 pb4 z-1">
-        <div id="quote" class="f3 fw3 tc"></div>
-        <div id="author" class="f4 fw3 tc"></div>
-      </div>
-
-      <img id="img" src="" class="w-100 h-100" />
-      <div class="overlay" />
-    </div>
+    </header>
 
     <script src="serenity.js"></script>
   </body>
