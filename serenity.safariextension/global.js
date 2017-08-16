@@ -104,21 +104,21 @@ function setTabContent() {
   tab.page.dispatchMessage("quote", getQuote());
 }
 
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function getQuote() {
   var allQuotes = quotes();
-  var quoteCache = cache.get("quoteCache");
   var index = cache.get("quoteIndex");
 
-  if (!quoteCache) {
+  if (!index) {
     var tomorrow = new Date();
     tomorrow.setHours(24, 1, 0, 0);
-    cache.set("quoteCache", "quoteCache", { expires: tomorrow });
 
-    if (index >= allQuotes.length) {
-      cache.set("quoteIndex", 0);
-    } else {
-      cache.set("quoteIndex", index ? parseInt(index, 10) + 1 : 0);
-    }
+    cache.set("quoteIndex", random(0, allQuotes.length), {
+      expires: tomorrow
+    });
   }
 
   return allQuotes[index || 0];
