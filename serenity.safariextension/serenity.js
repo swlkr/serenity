@@ -10,7 +10,9 @@ function padLeft(num) {
 
 function setBackground(message) {
   var posts = JSON.parse(message).data.children;
+
   var urls = posts
+    .filter(p => p && p.data && p.data.preview && p.data.preview.images)
     .filter(
       p =>
         !!p.data.preview.images && p.data.preview.images[0].source.width > 3000
