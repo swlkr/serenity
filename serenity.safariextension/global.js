@@ -1,6 +1,8 @@
 safari.application.addEventListener("open", onOpen, true);
 safari.application.addEventListener("message", onMessage, false);
 
+var timer;
+
 function onMessage(envelope) {
   if (envelope.name.indexOf("serenity.html") !== -1) {
     setTabContent();
@@ -10,11 +12,19 @@ function onMessage(envelope) {
 function onOpen(e) {
   if (e.target instanceof SafariBrowserTab) {
     e.target.addEventListener("beforeNavigate", onBeforeNavigate, false);
+
+    timer = setTimeout(function () {
+      e.target.removeEventListener("beforeNavigate", onBeforeNavigate, false);
+      if(e.target.url === null || e.target.url === "") {
+        e.target.url = safari.extension.baseURI + "serenity.html"
+      }
+    }, 300);
   }
 }
 
 function onBeforeNavigate(e) {
-  if (e.url === null) {
+  clearTimeout(timer);
+  if (e.url === null || e.url === "") {
     e.preventDefault();
     e.target.url = safari.extension.baseURI + "serenity.html";
   }
