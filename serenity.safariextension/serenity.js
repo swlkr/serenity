@@ -64,22 +64,28 @@ function greeting(hour) {
   }
 }
 
-function setTime() {
+function setData() {
+  var $time = document.getElementById("time")
+  var $ampm = document.getElementById("ampm")
+  var $greeting = document.getElementById("greeting")
+
+  if(!$time || !$ampm || !$greeting) { return; }
+
   var today = new Date();
   var h = today.getHours();
   var m = today.getMinutes();
 
-  document.getElementById("time").textContent =
+  $time.textContent =
     (h > 12 ? h - 12 : h) + ":" + padLeft(m);
 
   var ampm = h >= 12 ? "pm" : "am";
-  document.getElementById("ampm").textContent = ampm;
+  $ampm.textContent = ampm;
 
-  document.getElementById("greeting").textContent = greeting(h);
+  $greeting.textContent = greeting(h);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
   safari.self.tab.dispatchMessage(window.location.href, null);
 
-  setTime();
+  setData();
 });
