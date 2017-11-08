@@ -52,11 +52,11 @@
     "author": "Earl Nightingale"
   },
   {
-    "quote": "wenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do, so throw off the bowlines, sail away from safe harbor, catch the trade winds in your sails.  Explore, Dream, Discover.",
+    "quote": "Twenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do, so throw off the bowlines, sail away from safe harbor, catch the trade winds in your sails. Explore, Dream, Discover.",
     "author": "Mark Twain"
   },
   {
-    "quote": "ife is 10% what happens to me and 90% of how I react to it.",
+    "quote": "Life is 10% what happens to me and 90% of how I react to it.",
     "author": "Charles Swindoll"
   },
   {
