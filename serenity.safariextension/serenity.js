@@ -14,11 +14,9 @@ function setBackground(message) {
   var urls = posts
     .filter(p => p && p.data && p.data.preview && p.data.preview.images)
     .filter(
-      p =>
-        !!p.data.preview.images && p.data.preview.images[0].source.width > 3000
+      p => p.data.preview.images[0].source.width >= 3000
     )
-    .map(p => p.data.preview.images[0].source)
-    .map(res => res.url);
+    .map(p => p.data.url)
 
   var url = decodeURI(urls[0]);
   var bg = document.getElementById("background");
